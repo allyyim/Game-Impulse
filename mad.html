@@ -1,0 +1,439 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+<link href='https://fonts.googleapis.com/css?family=Odibee Sans' rel='stylesheet'>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+
+
+.nav {
+   height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  p{
+    font-family: "Oxygen";
+    font-size: 200px;
+  }
+}
+</style>
+<title>Mad Libs</title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<h1>Let's do some<br>Mad Libs!</h1>
+
+<hr>
+
+<div id="container">
+
+<div id="selectStory">
+	<p>Pick a story:</p>
+
+	<select>
+  		<option value="bear">Advice on Bears</option>
+ 		<option value="book">How to Choose a Book</option>
+  		<option value="dentist">A Visit to the Dentist</option>
+	</select>
+
+	<button id="getForm">Get Started!</button>
+</div>
+
+
+<div id="storyForm" class="hidden">
+		<div></div>
+		<button id="chooseAgain">Change Story?</button>
+		<button id="getStory">Get Mad Lib!</button>
+</div>
+
+<div id="finishedStory" class="hidden">
+
+	<p id="bearText" class="hidden">
+		If you go to some <span></span> place like Yellowstone National <span></span>, you must know how to deal with the wild animals such as bears and wolves and <span></span>. The most important of these is the bear. There are three kinds of bears, the grizzly bear, the <span></span> bear, and the <span></span> bear. Bears spend most of their time <span></span> or <span></span>. They look very <span></span>, but if you make them <span></span>, they might bite your <span></span>. Bears will come up to your car and beg for <span></span>. They will stand on their hind legs and clap their <span></span> together and pretend to be <span></span>. But do not get out of your <span></span> or offer the bears <span></span> or <span></span>. This same advice applies to other wild creatures such as <span></span> and <span></span>. Remember all these rules and you will spend your vacation <span></span> and not get eaten by a/an <span></span>.
+	</p>
+
+	<p id="bookText" class="hidden">
+		There are many <span></span> ways to choose a/an <span></span> to read. First, you could ask for recommendations from your friends and <span></span>. Just don't ask Aunt <span></span>&#8212;she only reads <span></span> books with <span></span>-ripping goddesses on the cover. If your friends and family are no help, try checking out the <span></span> review in <em>The <span></span> Times</em>. If the <span></span> featured there are too <span></span> for your taste, try something a little more low-<span></span>, like <em><span></span>: The <span></span> Magazine</em>, or <em><span></span> Magazine</em>. You could also choose a book the <span></span>-fashioned way. Head to your local library or <span></span> and browse the shelves until something catches your <span></span>. Or, you could save yourself a whole lot of <span></span> trouble and watch <span></span> TV instead!
+	</p>
+
+	<p id="dentistText" class="hidden">
+		<em>A one-act play to be performed by two <span></span> in this room</em>.<br>PATIENT: Thank you so very much for seeing me, Doctor <span></span>, on such <span></span> notice.<br>DENTIST: What is your problem, young <span></span>?<br>PATIENT: I have a pain in my upper <span></span>, which is giving me a severe <span></span> ache.<br>DENTIST: Let me take a look. Open your <span></span> wide. Good. Now I'm going to tap your <span></span> with my <span></span>.<br>PATIENT: Shouldn't you give me a/an <span></span> killer?<br>DENTIST: It's not necessary yet. <span></span>! I think I see a/an <span></span> in your upper <span></span>.<br>PATIENT: Are you going to pull my <span></span> out?<br>DENTIST: No, I'm going to <span></span> your tooth and put in a temporary <span></span>.<br>PATIENT: When do I come back for the <span></span> filling?<br>DENTIST: A day after I cash your <span></span>.
+	</p>
+
+<button id="reset">Try Again?</button>
+
+</div>
+
+<div id="footer">
+	<p>Adapted from MAD LIBS&#174;, Penguin Random House LLC.</p>
+</div>
+
+</div>
+<style>
+  body {
+	margin: 0;
+	background: #9693A8;
+	color: rgb(75, 4, 0);
+	font-size: 1.5rem;
+}
+
+h1	{
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 5rem;
+	letter-spacing: -0.5rem;
+	line-height: 90%;
+	margin: 0;
+	padding: 1%;
+	background: #582C56;
+	color: seashell;
+}
+
+hr {
+	border: none;
+	height: 1rem;
+	margin: 0;
+	background: white;
+}
+
+label {
+	display: inline-block;
+	margin-bottom: 5%;
+	width: 13rem;
+}
+ 
+span {
+	color: firebrick;
+	font-size: 110%;
+}
+
+select {
+	border: none;
+	font-family: 'Quicksand', sans-serif;
+	background: seashell;
+	font-size: 1rem;
+}
+
+input {
+	border: none;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 1.1rem;
+	width: 10rem;
+	text-align: center;
+	background-color: seashell;
+}
+
+button {
+  padding:5px;
+  background-color: rgb(75, 4, 0);
+  border: none;
+  color: bisque;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 1rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+button:hover {
+	background-color: firebrick;
+}
+
+#chooseAgain {
+	margin-right: 2rem;
+}
+
+.hidden {
+	display:none;
+}
+
+#finishedStory p {
+	text-align: justify;
+	padding: 0 10%;
+	text-indent: 2rem;
+}
+
+#container {
+	margin: 0 auto;
+	max-width: 700px;
+	padding: 20px;
+	text-align: center;
+}
+
+#footer {
+	font-size: 50%; 
+	text-align: center;
+	margin: 10% auto 0 auto;
+}
+</style>
+<script>
+  //select buttons for event listeners
+var getStoryButton = document.querySelector("#getStory");
+var resetButton = document.querySelector("#reset");
+var getFormButton = document.querySelector("#getForm");
+var chooseAgain = document.querySelector("#chooseAgain");
+
+// select div sections for showing/hiding
+var selectStory = document.querySelector("#selectStory");
+var storyForm = document.querySelector("#storyForm");
+var finshedStory = document.querySelector("#finishedStory");
+
+//select input div for populating the list/clearing the list 
+var inputs = document.querySelector("#storyForm div");
+
+//select the user's choice for story from dropdown
+var chosenStory = document.querySelector("select");
+
+//establish visibity of story
+var storyVisible = false;
+
+//array containing data for each story
+var story = {
+	bear: [
+			[
+				"Adjective",
+				"Noun",
+				"Plural noun",
+				"Adjective",
+				"Adjective",
+				"Verb (ending -ing)",
+				"Verb (ending -ing)",
+				"Adjective",
+				"Adjective",
+				"Noun",
+				"Food (plural)",
+				"Part of the body (plural)",
+				"Adjective",
+				"Vehicle",
+				"Food (plural)",
+				"Food (plural)",
+				"Something alive (plural)",
+				"Something alive (plural)",
+				"Adverb",
+				"Noun"
+			],
+			"#bearText",
+			"#bearText span"
+		],
+	book: [
+			[
+				"Adjective",
+				"Noun",
+				"Plural noun",
+				"Person in room (female)",
+				"Adjective",
+				"Article of clothing",
+				"Noun",
+				"City",
+				"Plural noun",
+				"Adjective",
+				"Part of the body",
+				"Letter of the alphabet",
+				"Celebrity",
+				"Plural Noun",
+				"Adjective",
+				"Place",
+				"Part of the body",
+				"Adjective",
+				"Genre"
+			],
+			"#bookText",
+			"#bookText span"
+		],
+	dentist: [
+			[
+				"Plural noun",
+				"Person in room<br>(last name)",
+				"Adjective",
+				"Noun",
+				"Noun",
+				"Part of the body",
+				"Part of the body",
+				"Plural noun",
+				"Noun",
+				"Noun",
+				"Exclamation",
+				"Noun",
+				"Noun",
+				"Noun",
+				"Verb",
+				"Noun",
+				"Adjective",
+				"Noun"
+			],
+			"#dentistText",
+			"#dentistText span"
+		]
+};
+
+//hide selection dropdown and show generated form for user word inputs
+getFormButton.addEventListener("click", function(){
+	makeForm();
+
+	selectStory.classList.add("hidden");
+	storyForm.classList.remove("hidden");
+});
+
+chooseAgain.addEventListener("click", function(){
+	selectStory.classList.remove("hidden");
+	storyForm.classList.add("hidden");
+
+	inputs.innerHTML = "";
+});
+
+//generate story, hide form and show finished story
+getStoryButton.addEventListener("click", function(){
+	storyVisible = true;
+
+	makeStory();
+	showHideStory();
+});
+
+//reset button to try again!
+resetButton.addEventListener("click", function () {
+	storyVisible = false;
+
+	showHideStory();
+
+	inputs.innerHTML = "";
+});
+
+// generate form based on selected story from dropdown
+function makeForm(){
+		var storyChoice = story[chosenStory.value][0];
+
+		for(var i = 0; i < storyChoice.length; i++){
+			inputs.innerHTML += "<label>" + storyChoice[i] + '<br><input type="text"></label>';
+		}
+}
+
+//use user inputted words to build story from base text 
+function makeStory(){
+	var wordSlots = document.querySelectorAll(story[chosenStory.value][2]);
+	var inputWords = document.querySelectorAll("input");
+
+	//set answers in the form to corresponding span slot in story
+	for(var i = 0; i < wordSlots.length; i++){
+		wordSlots[i].textContent = inputWords[i].value;
+	}
+}
+
+//alter the visibility of text sections depending on if story shoud be seen or app reset 
+function showHideStory(){
+	var storyText = document.querySelector(story[chosenStory.value][1]);
+
+	if(storyVisible) {
+		storyText.classList.remove("hidden");
+		finishedStory.classList.remove("hidden");
+		storyForm.classList.add("hidden");
+	}
+	else {
+		storyText.classList.add("hidden");
+		finishedStory.classList.add("hidden");
+		selectStory.classList.remove("hidden");
+	}
+}
+</script>
