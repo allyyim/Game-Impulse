@@ -1,0 +1,421 @@
+<title>Word Games</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+}
+
+.nav {
+  height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  .card{
+    padding: 500px;
+  }
+  .row { 
+    padding: 100px;
+}
+}
+</style>
+<title>Game Impulse </title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div><style>
+  @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,700,900');
+*{
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+body{
+	font-family: 'Libre Franklin', sans-serif;
+	background: #F2F2F2;
+}
+.make-flex{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.twidth{
+	max-width: 600px;
+	width: 100%;
+}
+.container{
+	background: white;
+	margin: 0 auto;
+	text-align: center;
+}
+h2{
+	color: #3E333F;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin: 5rem 0 3rem 0;
+	text-align: center;
+}
+#question{
+	color: #2D6E7E;
+	min-height: 66px;
+	font-size: 1.3rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin-bottom: 1rem;
+	padding: .5rem;
+}
+.optnContainer{
+	position: relative;
+	-webkit-box-align: stretch;
+	    -ms-flex-align: stretch;
+	        align-items: stretch;
+	width: 100%;
+}
+.answer{
+	color: #F2F2F2;
+	background: #153B44;
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+	min-height: 51px;
+	padding: 1rem;
+	letter-spacing: 2px;
+	margin-top: 3px;
+	-webkit-transition: background 300ms;
+	-o-transition: background 300ms;
+	transition: background 300ms;
+}
+.answer:hover{
+	cursor: pointer;
+}
+.incorrect{
+	background: #CF1B1B;
+}
+.correct{
+	background: #04a569;
+}
+.score{
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: stretch;
+	    -ms-flex-align: stretch;
+	        align-items: stretch;
+	margin-top: 2rem;
+}
+.score p{
+	text-align: center;
+	padding: .8rem;
+	width: 50%;
+	color: white;
+	letter-spacing: 5px;
+}
+#resetscore{
+	background: #295F4E;
+	-webkit-transition-duration: 300ms;
+	     -o-transition-duration: 300ms;
+	        transition-duration: 300ms;
+}
+#resetscore:hover{
+	background: #194235;
+	cursor: pointer;
+}
+#hscore{
+	font-weight: 900;
+	background: #6DB193;
+}
+#skip{
+	padding: .8rem;
+	margin-top: 3px;
+	background: #ff4f02;
+	color: white;
+	text-align: center;
+	-webkit-transition-duration: 300ms;
+	     -o-transition-duration: 300ms;
+	        transition-duration: 300ms;
+}
+#skip:hover{
+	background: #c43b00;
+	cursor: pointer;
+}
+small{
+	margin: 3rem 0 5rem 0;
+	font-size: 12px;
+	font-weight: 900;
+	color: #232323;
+}
+.loading{
+	position: absolute;
+	background: white;
+	opacity: .3;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+}
+@-webkit-keyframes loadingicon{
+	from{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+@keyframes loadingicon{
+	from{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+.animation{
+	position: absolute;
+	top: 41%;
+	left: 46%;
+	width: 40px;
+	height: 40px;
+	opacity: 1;
+	border-top: 5px solid #232323; 
+	border-bottom: 5px solid #232323;
+	border-right: 5px solid rgba(255,255,255,0); 
+	border-left: 5px solid rgba(255,255,255,0); 
+	border-radius: 50%;
+	z-index: 100;
+	-webkit-animation-name: loadingicon;
+	        animation-name: loadingicon;
+	-webkit-animation-duration: 400ms;
+	        animation-duration: 400ms;
+	-webkit-animation-timing-function: linear;
+	        animation-timing-function: linear;
+	-webkit-animation-delay: 0;
+	        animation-delay: 0;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+}
+</style>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="make-flex">
+	<h2>Trivia Questions & Answers</h2>
+	<div class="container twidth make-flex">
+		<p id="question"></p>
+		<div class="optnContainer make-flex">
+			<p id="optn1" class="answer"></p>
+			<p id="optn2" class="answer"></p>
+			<p id="optn3" class="answer"></p>
+			<p id="optn4" class="answer"></p>
+			<div id="waiting"></div>
+			<div id="waitanim"></div>
+		</div>
+	</div>
+	<div class="score twidth make-flex">
+		<p id="hscore">0</p>
+		<p id="resetscore">Reset Score!</p>
+	</div>
+	<p id="skip" class="twidth">Skip Question</p>
+  <footer>
+			<p>Go back: <a href="word.html">Word Games</a></p>
+	</footer>
+</body>
+</html>
+<script>
+  var ans = document.querySelectorAll(".answer");
+var resetScore = document.querySelector("#resetscore");
+var skipQues = document.querySelector("#skip");
+var waiting = document.querySelector("#waiting");
+var loadAnim = document.querySelector("#waitanim");
+var curScore = 0;
+var data;
+
+function randIndex(){
+	return Math.floor(Math.random()*4);
+}
+function fetchReq() {
+	loading(true);
+	axios("https://opentdb.com/api.php?amount=1&type=multiple")
+	.then(updateQues)
+}
+
+function updateQues(response) {
+	data = response.data.results[0];
+	document.querySelector("#question").innerHTML = data.question;
+	var options = data.incorrect_answers;
+	options.splice(randIndex(),0,data.correct_answer);
+	document.querySelector("#optn1").innerHTML = options[0];
+	document.querySelector("#optn2").innerHTML = options[1];
+	document.querySelector("#optn3").innerHTML = options[2];
+	document.querySelector("#optn4").innerHTML = options[3];
+	loading(false);
+}
+for (var i = 0; i < ans.length; i++) {
+	ans[i].addEventListener("click",function(){
+		checkAnswer(this);		
+	});
+}
+function checkAnswer(ele) {
+	if(ele.innerHTML === data.correct_answer){
+		ele.classList.add("correct");
+		loading(true);
+		document.querySelector("#hscore").innerHTML = ++curScore;
+		changeQues();
+	}else {
+		ele.classList.add("incorrect");
+		loading(true);
+		document.querySelector("#hscore").innerHTML = --curScore;
+		changeQues();
+	}
+}
+function changeQues() {
+	
+	setTimeout(function(){
+		for (var j = 0; j < ans.length; j++) {
+			ans[j].classList.remove("incorrect")
+			ans[j].classList.remove("correct")
+		}	
+		fetchReq();
+	},800)
+}
+function loading(fire){
+	if(fire){
+		waiting.classList.add("loading");
+		loadAnim.classList.add("animation");
+	}else{
+		waiting.classList.remove("loading");
+		loadAnim.classList.remove("animation");
+	}
+}
+resetScore.addEventListener("click",function (argument) {
+	curScore = 0;
+	document.querySelector("#hscore").innerHTML = curScore;
+});
+skipQues.addEventListener("click",function() {
+	loading(true);
+	fetchReq();
+})
+fetchReq();
+</script>

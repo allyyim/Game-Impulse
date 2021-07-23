@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+<link href='https://fonts.googleapis.com/css?family=Odibee Sans' rel='stylesheet'>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+
+
+.nav {
+   height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  p{
+    font-family: "Oxygen";
+    font-size: 200px;
+  }
+}
+</style>
+<title>Game Impulse </title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<header>
+  <br>
+  <h1>Welcome to Game Impulse!</h1>
+  <center> <img src="https://www.essentiallysports.com/stories/top-selling-playstation-xbox-and-nintendo-consoles-of-all-time-news-esports-ps2-ps4-wii-sony-microsoft/assets/15.gif"></center>
+  <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="-300 0 950 270" >
+    <path d="M-314,267 C105,364 400,100 812,279" fill="none" stroke="white" stroke-width="120" stroke-linecap="round"/>
+  </svg>
+</header>
+<section>
+  <h3>Here you can explore an extensive collection of free online games. There are card games, board games, word games, and arcade games. Play anything from Solitaire to Battleship!</h3>
+</section>
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: relative;
+  height: 500px;
+  background: #582C56;
+/*   background-image: linear-gradient(155deg, #002f62 0%, #18496a 50%, #138b89 100%); */
+}
+img{
+  width: 300px;
+  height: 300px;
+}
+header h1 {
+  color: white;
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
+section {
+  margin: 5% 10%;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-family: 'Odibee Sans';font-size: 55px;
+}
+h3{
+  font-family: 'Odibee Sans';font-size: 35px;
+}
+</style>

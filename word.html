@@ -1,0 +1,158 @@
+<title>Word Games</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+}
+
+.nav {
+  height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  .card{
+    padding: 500px;
+  }
+  .row { 
+    padding: 100px;
+}
+}
+</style>
+<title>Game Impulse </title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<h1>Word Games</h1>
+ <div class="row justify-content-around">
+<div class="card" style="width: 18rem;">
+  <img src="https://www.thesprucecrafts.com/thmb/56ayMe-Cus4yFHXxkQ8fLztVZa4=/1500x1000/filters:fill(auto,1)/scrabble-words-q-without-u-412401_3126-c916e4abe1a7428d9ebea013cb876fd6.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Scrabble</h5>
+    <p class="card-text">Play the classic Scrabble game you know and love! </p>
+    <a href="scrabble.html" class="btn btn-danger stretched-link">Play</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://media.istockphoto.com/vectors/hangman-chalk-board-vector-id165812595?k=6&m=165812595&s=612x612&w=0&h=vE9fFtToAPAiak5kamMmU8hLnVsBav-hZfMgDiDLWqY=" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Hangman</h5>
+    <p class="card-text">Guess letters one at a time to solve the word puzzle!</p>
+    <a href="hangman.html" class="btn btn-danger stretched-link">Play</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="https://lakevieweast.com/wp-content/uploads/trivia-stock-scaled.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Trivia</h5>
+    <p class="card-text">Step up your quiz game by answering fun trivia questions!</p>
+    <a href="trivia.html" class="btn btn-danger stretched-link">Play</a>
+  </div>
+</div>
+</div>

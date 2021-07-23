@@ -1,0 +1,602 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<title>Hangman</title>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+}
+
+.nav {
+   height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+</style>
+
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconne ct" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<style>
+  * {
+  filter: hue-rotate(0deg);
+}
+
+body {
+    margin: 0;
+    overflow: scroll;
+    font-family: sans-serif;
+    font-family: 16pt;
+    background: #61646B;
+  }
+  
+  #hangman {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 35pt;
+    font-family: 'Open Sans', sans-serif;
+    color: #D3E7F1;
+    margin: 0 auto;
+    transition: .3s;
+  }
+
+.change_theme {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  cursor: pointer;
+  z-index: 5;
+  background: transparent;
+  color: white;
+  border: solid white 1px;
+  transition: .2s;
+}
+
+.change_theme:hover {
+  top: 65px;
+  right: 45px;
+  box-shadow: 3px 5px 6px black;
+  transition: .2s;
+}
+
+  .description {
+    color: #D3E7F1;
+  }
+  
+  .new_game {
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+    cursor: pointer;
+    background: none;
+    color: #B9FFCE;
+    border: solid #B9FFCE 1px;
+    outline: none;
+    opacity: .5;
+  }
+
+  .new_game:hover {
+    border: solid #B9FFCE 2px;
+    opacity: 1;
+  }
+
+
+  .verdict {
+    height: 60px;
+  }
+
+  .lose {
+    display: none;
+    margin: 0;
+    font-size: 20pt;
+    font-size: 30pt;
+    color: rgb(146, 60, 135);
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  .win {
+    display: none;
+    margin: 0;
+    font-size: 20pt;
+    color: #B9FFCE;
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  #canvas_background {
+    fill: none;
+  }
+  
+  #row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #player-guess-container {
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #player-guess-container .guess {
+    cursor: pointer;
+    background: none;
+    margin: 2px;
+    height: 30px;
+    width: 30px;
+    font-size: 1em;
+    color: white;
+    background: #7FB3D5;
+    outline: none;
+    border: none;
+    -webkit-box-shadow: 5px 5px 19px -2px #000000; 
+    box-shadow: 5px 5px 19px -2px #000000;
+    border-radius: 10px;
+  }
+
+  #player-guess-container .guess:hover {
+    box-shadow: inset 3px 2px 3px silver;
+  }
+
+  #player-guess-container .guess:disabled {
+    opacity: .5;
+  }
+  
+
+  .bad_guess {
+    color: pink;
+  }
+  
+  #player-status {
+    height: 275px;
+    padding: 20px;
+    font-size: 14pt;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  #word-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .test {
+    width: 40px;
+    height: 30px;
+    border-bottom: solid black 1px;
+    margin-right: 20px;
+    color: #D3E7F1;
+    font-size: 20pt;
+  }
+
+  @media(max-width: 700px) {
+
+    #row {
+      flex-direction: column-reverse;
+    }
+
+    .win {
+      font-size:30pt; 
+    }
+
+    .lose {
+      font-size: 30pt;
+    }
+
+    #player-guess-container {
+      width: 100%;
+    }
+
+    #player-guess-container .guess {
+      font-size: 12pt;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+    }
+
+  }
+</style>
+<body>
+    <section id="hangman">
+        <h1>HANGMAN</h1>
+      <button class="change_theme">Change Theme</button>
+        <div class="verdict">
+          <p class="lose">>GAME OVER</p>
+          <p class="win">>YOU WIN</p>
+        </div>
+        <article id="row">
+          <div id="player-guess-container">
+            <p class="description">Select a category to begin</p>
+            <div class="categories">
+              <button class="animals new_game">Animals</button>
+              <button class="cities new_game">Cities</button>
+              <button class="star wars new_game">Star Wars</button>
+            </div>
+            <div class="all_keys">
+              <div class="key_row_one">
+                <button class="q guess">Q</button>
+                <button class="w guess">W</button>
+                <button class="e guess">E</button>
+                <button class="r guess">R</button>
+                <button class="t guess">T</button>
+                <button class="y guess">Y</button>
+                <button class="u guess">U</button>
+                <button class="i guess">I</button>
+                <button class="o guess">O</button>
+                <button class="p guess">P</button>
+              </div>
+              <div class="key_row_two">
+                <button class="a guess">A</button>
+                <button class="s guess">S</button>
+                <button class="d guess">D</button>
+                <button class="f guess">F</button>
+                <button class="g guess">G</button>
+                <button class="h guess">H</button>
+                <button class="j guess">J</button>
+                <button class="k guess">K</button>
+                <button class="l guess">L</button>
+              </div>
+              <div class="key_row_three">
+                <button class="z guess">Z</button>
+                <button class="x guess">X</button>
+                <button class="c guess">C</button>
+                <button class="v guess">V</button>
+                <button class="b guess">B</button>
+                <button class="n guess">N</button>
+                <button class="m guess">M</button>
+              </div>
+            </div>
+          </div>
+          <div id="player-status">
+              <div class="bad_guess"></div>
+              <svg width="210" height="210" xmlns="http://www.w3.org/2000/svg">
+                <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+               
+                <g stroke="null">
+                 <title>background</title>
+                 <rect x="-1" y="-1" width="212" height="212" id="canvas_background" stroke="null"/>
+                 <g id="canvasGrid" display="none" stroke="null">
+                  <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+                 </g>
+                </g>
+                <g stroke="null">
+                 <title>Layer 1</title>
+                 <rect stroke="#000" class="gallow" fill="#B9FFCE" stroke-width="0" x="45.31816" y="15.45313" width="5" height="183" id="svg_4"/>
+                 <rect stroke="#000" class="gallow" fill="#B9FFCE" stroke-width="0" stroke-opacity="null" x="5.0242" y="195.99992" width="123.5334" height="5.6" id="svg_5"/>
+                 <rect stroke="#000" class="gallow" fill="#B9FFCE" stroke-width="0" stroke-opacity="null" x="45.8182" y="12.99997" width="101.79999" height="5.6" id="svg_7"/>
+                 <rect stroke="#000" class="gallow" fill="#B9FFCE" stroke-width="0" stroke-opacity="null" x="140.62423" y="13.75755" width="7.2" height="41.52731" id="svg_17"/>
+                 <ellipse stroke="#000" class="head" fill="#B9FFCE" stroke-width="0" stroke-opacity="null" cx="144.24857" cy="63.78917" id="svg_18" rx="13.00608" ry="12.80002"/>
+                 <rect stroke="#000" class="neck" fill="#B9FFCE" stroke-width="0" x="143.06048" y="72.23257" width="2.4" height="23.0788" id="svg_32"/>
+                 <rect transform="rotate(139.71775817871094 136.7581787109375,85.96707153320314) " stroke="#000" class="left_arm" fill="#B9FFCE" stroke-width="0" x="135.5082" y="74.90763" width="2.49995" height="22.11887" id="svg_36"/>
+                 <rect stroke="#000" class="torso" fill="#B9FFCE" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="143.34801" y="94.23871" width="2.08696" height="20.48228" id="svg_38"/>
+                 <rect transform="rotate(38.08864974975586 151.6085357666016,85.35657501220703) " stroke="#000" class="right_arm" fill="#B9FFCE" stroke-width="0" x="150.35855" y="73.68631" width="2.49995" height="23.34053" id="svg_34"/>
+                 <rect transform="rotate(-146.4536590576172 137.6775360107422,123.99925231933595) " stroke="#000" class="left_leg" fill="#B9FFCE" stroke-width="0" x="136.42756" y="111.37273" width="2.49995" height="25.25304" id="svg_41"/>
+                 <rect transform="rotate(-30.7056827545166 150.40476989746102,123.9992446899414) " stroke="#000" class="right_leg" fill="#B9FFCE" stroke-width="0" x="149.15481" y="111.37273" width="2.49995" height="25.25304" id="svg_2"/>
+                </g>
+               </svg>
+          </div>
+        </article>
+        <div id="word-container">
+          <div id="current-word">
+          </div>
+        </div>
+      </section>
+      <script src="script.js"></script>
+</body>
+</html>
+	<footer>
+			<p>Go back: <a href="word.html">Word Games</a></p>
+		</footer>
+<script>
+  //DOM variables
+let guessedLetter = document.querySelector("#guessed-letter");
+let newGame = document.querySelector("#new-game");
+let currentWord = document.querySelector("#current-word");
+let wordContainer = document.querySelector("#word-container");
+let playerStatus = document.querySelector("#player-status");
+let playerInput = document.querySelector("#player-guess")
+let guessBtn = document.querySelectorAll("#player-guess-container .guess");
+let badGuess = document.querySelector(".bad_guess")
+let gallow = document.querySelectorAll("g .gallow")
+let win = document.querySelector(".win");
+let lose = document.querySelector(".lose");
+let hangingGuy = document.querySelectorAll("g rect");
+let categories = document.querySelectorAll(".categories button")
+let allKeys = document.querySelector(".all_keys");
+let changeTheme = document.querySelector(".change_theme")
+
+const starWars = ["empire", "lightsaber", "wookiee", "mandalorian", "jedi", "stormtrooper", "force", "droid", "ewoks", "sith", "padawan", "yoda", "tatooine", "kashyyyk", "blaster", "clone", "kenobi", "windu", "skywalker", "grogu", "solo", "bantha", "grievous", "bespin", "hoth", "dagobah", "endor", "leia", "tarkin", "anakin", "tauntaun", "rebellion", "alderaan", "naboo", "jabba", "corellia", "apprentice", "darth", "vader", "sidious", "emperor", "master", "binks", "senator", "deathstar", "greedo", "bounty", "yavin"];
+const cities = ["madrid", "athens", "paris", "austin", "dallas", "philadelphia", "amsterdam", "thessaloniki", "marseille", "tokyo", "taipei", "bangkok", "mumbai", "london", "chicago", "berlin", "dubai", "moscow", "istanbul"]
+const animals = ["whale", "zebra", "jellyfish", "elephant", "cow", "lemur", "caterpillar", "toucan", "bison", "mustang", "hamster", "mole", "gecco", "wombat", "aardvaark", "anteater", "koala", "orangutan", "sloth", "cheetah"]
+guessBtn.forEach(letter => { 
+    letter.setAttribute("disabled", "")
+});
+
+let subject = ""
+let newWord = "";
+const wordSelector = (category) => {
+    let random = Math.floor(Math.random() * category.length);
+    newWord = category[random]
+    console.log(newWord)
+};
+
+//creating letter spaces
+const blankSpaces = () => {
+    for (let i = 0; i < newWord.length; i++) {
+        let div = document.createElement("div");
+        wordContainer.appendChild(div)
+        div.className = "test";
+        //someVariable I can iterate through
+    };
+}
+
+//Deleting letter spaces
+const removeSpaces = () => {
+    let currentWordArr = wordContainer.querySelectorAll(".test");
+    currentWordArr.forEach(spaces => {
+        spaces.remove()
+    });
+};
+
+//player guess
+let wrongLetters = []
+let rightLetters = [];
+let finalWord = []
+
+//player guess functions
+guessBtn.forEach(letter => {
+    letter.addEventListener('click', () => {
+        let currentWord = newWord.split("")
+        let currentWordArr = wordContainer.querySelectorAll(".test");
+        letter.setAttribute("disabled", "true")
+        //bad guess
+        if (!currentWord.includes(letter.innerText.toLowerCase())) {
+            wrongLetters.push(letter.innerText);
+            badGuess.innerHTML = wrongLetters.join(' ');
+            //good guess
+        } else {
+            rightLetters.push(letter.innerText)
+            for (let i = 0; i < currentWord.length; i++) {
+                if (currentWord[i] === letter.innerText.toLowerCase()) {
+                    currentWordArr[i].innerHTML = letter.innerText
+                    finalWord.push(letter.innerText)
+                }
+            };
+
+
+            if (finalWord.length === currentWord.length) {
+                win.style.display = "block"
+                guessBtn.forEach(button => {
+                    button.setAttribute("disabled", "")
+                });
+            }
+        };
+//bad guess conditions for hanging the man
+        if (wrongLetters.length === 1) {
+            for (let i = 0; i < gallow.length; i++) {
+                gallow[i].style.display = "block";
+            }
+        } else if (wrongLetters.length === 2) {
+            document.querySelector(".head").style.display = "block";
+        } else if (wrongLetters.length === 3) {
+            document.querySelector(".neck").style.display = "block";
+        } else if (wrongLetters.length === 4) {
+            document.querySelector(".right_arm").style.display = "block";
+        } else if (wrongLetters.length === 5) {
+            document.querySelector(".left_arm").style.display = "block";
+        } else if (wrongLetters.length === 6) {
+            document.querySelector(".torso").style.display = "block";
+        } else if (wrongLetters.length === 7) {
+            document.querySelector(".right_leg").style.display = "block";
+        } else if (wrongLetters.length === 8) {
+            document.querySelector(".left_leg").style.display = "block";
+            lose.style.display = "block";
+            for(let i = 0; i < currentWord.length; i++){
+                currentWordArr[i].innerHTML = currentWord[i].toUpperCase();
+                currentWordArr[i].style.color = "grey";
+            };
+            guessBtn.forEach(button => {
+                button.setAttribute("disabled", "")
+            })
+        }
+    })
+});
+
+//choose a category and start a new game
+const categoryAll = () => {
+    removeSpaces();
+    currentWordSplit = newWord.split("");
+    blankSpaces()
+    wrongLetters = [];
+    rightLetters = [];
+    finalWord = [];
+    badGuess.innerHTML = wrongLetters
+    win.style.display = "none";
+    lose.style.display = "none";
+    hangingGuy.forEach(piece => {
+        piece.style.display = "none";
+    });
+    document.querySelector(".head").style.display = "none";
+    guessBtn.forEach(letter => {
+      if (letter.hasAttribute("disabled", "")) {
+          letter.removeAttribute("disabled", "")
+      }
+  })
+};
+
+
+//category selections
+categories[0].addEventListener('click', () => {
+    wordSelector(animals);
+    categoryAll()
+    categories[0].style.cssText = "opacity: 1; border: solid #B9FFCE 2px";
+    categories[1].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+    categories[2].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+});
+
+categories[1].addEventListener('click', () => {
+  wordSelector(cities);
+  categoryAll();
+  categories[1].style.cssText = "opacity: 1; border: solid #B9FFCE 2px";
+  categories[0].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+  categories[2].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+});
+
+categories[2].addEventListener('click', () => {
+  wordSelector(starWars);
+  categoryAll();
+  categories[2].style.cssText = "opacity: 1; border: solid #B9FFCE 2px";
+  categories[0].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+  categories[1].style.cssText = "opacity: .5; border: solid #B9FFCE 1px";
+});
+
+document.querySelector(".q").addEventListener("keyQ", function(event) {
+     if (event.keyCode === 81) {
+     event.preventDefault();  
+    authenticate.click();
+  }        
+});
+
+//changing theme
+
+changeTheme.addEventListener('click', () => {
+  let ran = Math.random() * 360;
+  let ranNum = Math.floor(ran);
+  let allItems = document.querySelectorAll("#hangman");
+  allItems.forEach(item => {
+    item.style.filter = `hue-rotate(${ranNum}deg)`
+  })
+})
+</script>
