@@ -1,0 +1,304 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+<link href='https://fonts.googleapis.com/css?family=Odibee Sans' rel='stylesheet'>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+
+
+.nav {
+   height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  p{
+    font-family: "Oxygen";
+    font-size: 200px;
+  }
+}
+</style>
+<title>Vocab Challenger</title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<!-- Left Panel -->
+		<div class="
+		col-12
+		col-md-4"
+		id="Instructions">
+			
+			<div class="row">
+				<div class="col-12">
+					<h1>Vocabulary Challenger</h1>
+					<hr />
+					<h4>Instructions</h4>
+					<p>Focus on the typing area and press "Ready". A word will flash quickly before you. Spell the word correctly and advance to the next.</p>
+					</div>
+			</div>
+			
+		</div>
+
+		<!-- Middle Panel -->
+		<div class="
+		col-12
+		col-md-4"
+		id="AppContainer">
+		
+			<!-- App Typing Area -->
+			<div class="text-center"
+			id="TypingArea">
+				
+				<!-- HTML1 -->
+				<span class="focus-text">Focus here</span>
+				<br />
+				<p class="mt-4"><button class="btn btn-primary" id="ReadyBtn" onclick="showWord()">Ready</button></p>
+				
+				
+				<!-- HTML2
+				<form>
+				<input type="text" id="UserTypedInput" />
+				<br />
+				<p class="mt-4"><input type="submit" class="btn btn-primary" id="EnterBtn" onclick="checkWord()" value="Enter" /></p>
+				</form>
+				-->
+		</div>
+	</div>
+	<!-- App Definition Area -->
+	<div class="
+	col-12
+	col-md-4
+	col-lg-2"
+	id="DefinitionArea">
+		
+		<h4>Definition</h4>
+		<hr />
+		<p id="Definition"></p>
+		
+	</div>
+</div>
+<center>
+	<footer>
+			<p>Go back: <a href="word.html">Word Games</a></p>
+		</footer>
+<style>
+  .container-fluid {
+	background:linear-gradient(to bottom right, #d7f2e7, #e9f7c0);
+	height:100vh;
+}
+h2 {
+	font-family:cursive;
+}
+.btn-primary {
+	background-color:#d7f2e7;
+	font-size:0.9rem;
+	color:#052c30;
+	padding:3px 8px;
+	border-top:1px solid #052c30;
+	border-left:1px solid #052c30;
+	border-right:2px solid #052c30;
+	border-bottom:2px solid #052c30;
+}
+.btn-primary:hover {
+	background-color:#f4fcf9;
+	color:#105259;
+	border:1px solid #052c30;
+}
+#Instructions {
+	padding:1.5rem;
+}
+#AppContainer {
+	background-color:#fff;
+	height:300px;
+	border:0.2rem solid #052c30;
+	margin:1.5rem 0;
+}
+#TypingArea {
+	margin-top:135px;
+}
+.focus-text {
+	color:#adadad;
+	font-size:30px;
+	line-height:30px;
+}
+.word-flash-text {
+	color:#000;
+	font-size:30px;
+	line-height:30px;
+}
+#UserTypedInput {
+	padding:5px;
+	margin-top:-15px;
+	font-size:30px;
+	line-height:30px;
+	max-width:100%;
+}
+#DefinitionArea {
+	padding:1.5rem;	
+}
+#Definition {
+	font-style:italic;
+}
+</style>
+<script>
+  var words = [
+"miscellaneous",
+"caffeine",
+"misspell",
+"misdemeanor",
+"affidavit",
+"surprise"
+]
+
+var HTML1 = '<span class="focus-text">Focus here</span><br /><p class="mt-4"><button class="btn btn-primary" id="ReadyBtn" onclick="showWord()">Ready</button></p>';
+var HTML2 = '<form><input type="text" id="UserTypedInput" /><br /><p class="mt-4"><input type="submit" class="btn btn-primary" id="EnterBtn" onclick="checkWord()" value="Enter" /></p></form>';
+var HTML3 = '<span class="word-flash-text">';
+var HTML4 = '</span>';
+var HTML5 = '<p>Correct!</p><br /><p class="mt-4"><button class="btn btn-primary" id="NextBtn" onclick="nextWord()">Next</button></p>';
+
+function resetTypingArea() {
+	document.getElementById('TypingArea').innerHTML = HTML1;
+}
+
+function resetDefinition() {
+	document.getElementById('Definition').innerHTML = '';
+}
+
+function enableTyping() {
+	document.getElementById('TypingArea').innerHTML = HTML2;
+	document.getElementById('UserTypedInput').focus();
+}
+
+function showWord() {
+	document.getElementById('TypingArea').innerHTML = 
+	HTML3 +	words[3] + HTML4;
+	setTimeout(enableTyping,1000);	
+}
+
+function showDefinition(word) {
+	document.getElementById('Definition').innerHTML = 
+	"<strong>" + word + "</strong><br /><br />Less than a felony";
+}
+
+function checkWord() {
+	var theWord = document.getElementById('UserTypedInput').value;
+	if (theWord == words[3]) {
+		document.getElementById('TypingArea').innerHTML = HTML5;
+		showDefinition(theWord);
+	} else {
+		document.getElementById('TypingArea').innerHTML = "Sorry, that's not correct.";
+		setTimeout(resetTypingArea,1000);
+	}
+	
+}
+
+$(document).ready(function()
+{
+var dictAPI = "http://crossorigin.me/https://od-api.oxforddictionaries.com/api/v1";
+})
+</script>
