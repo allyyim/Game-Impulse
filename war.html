@@ -1,0 +1,204 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+<link href='https://fonts.googleapis.com/css?family=Odibee Sans' rel='stylesheet'>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Game Impulse
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+
+
+.nav {
+   height: 52px;
+  width: 100%;
+  background-color: #582C56;
+  position: relative;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  p{
+    font-family: "Oxygen";
+    font-size: 200px;
+  }
+}
+</style>
+<title>War</title>
+  <div class="nav-links">
+    <a href="card.html">Card Games</a>
+    <a href="board.html">Board Games</a>
+    <a href="word.html" >Word Games</a>
+    <a href="arcade.html" >Arcade Games</a>
+    <a href="index.html" >Welcome</a>
+  </div>
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <title>War!</title>
+</head>
+<body>
+	<h1 id='header'>Let's play WAR!</h1>
+	<span class="btn-start">START</span>
+	<span class="btn-flip">FLIP!</span> 
+	<div id="decision"></div>
+	<br />
+	<div id="userPoints"></div>
+	<br />
+	<div id="computerPoints"></div>
+	<br />
+	<div id= "user_deck">
+		<span id="user-name">User</span>
+		</br>
+		<img id= "deck-img" src="images/deck-cards-red.png">
+		<div id="user-card-flipped"></div>
+	</div>	
+	<div id="here"></div>
+	<div id= "computer_deck">
+		<span id="computer-name">Computer</span>
+		</br>
+		<img id= "deck-img" src="images/deck-cards-blue.png">
+		<div id="computer-card-flipped"></div>
+	</div>
+	<span class="btn-playagain">Play Again?</span>
+	
+<script src="war.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.btn-start').show();
+		$('.btn-flip').hide();
+		$('.btn-playagain').hide();
+	});
+	$('.btn-start').click(function(e) {
+		$(this).remove();
+		$('.btn-flip').toggle(); 
+		assignDeck(shuffle(cards));
+		console.log("userDeck: ", userDeck);
+		console.log("computerDeck: ", computerDeck);
+		mainGame();
+		$('#userPoints').empty().append("UserPoints: " + userPoints);
+		$('#computerPoints').empty().append("ComputerPoints: " + computerPoints);
+		winnerCheck(userPoints, computerPoints);
+	});
+	$('.btn-flip').click(function(e) {
+		mainGame();
+		$('#userPoints').empty().append("UserPoints: " + userPoints);
+		$('#computerPoints').empty().append("ComputerPoints: " + computerPoints);
+		winnerCheck(userPoints, computerPoints);
+		// $('#war').remove();
+	});
+	$('.btn-playagain').click(function(e) {
+		$(this).hide();
+		$('.btn-flip').toggle();
+		$('#win').remove();
+		$('#lose').remove();
+		MGi = 0;
+		userDeck = [], userPoints = 0;
+		computerDeck = [], computerPoints = 0;
+		assignDeck(shuffle(cards));
+		console.log("userDeck: ", userDeck);
+		console.log("computerDeck: ", computerDeck);
+		mainGame();
+		$('#userPoints').empty().append("UserPoints: " + userPoints);
+		$('#computerPoints').empty().append("ComputerPoints: " + computerPoints);
+		winnerCheck(userPoints, computerPoints);
+	});
+</script>
+</body>
+</html>
